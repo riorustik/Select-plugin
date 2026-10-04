@@ -7,6 +7,7 @@
   padding-top: 5rem;
   display: flex;
   justify-content: center;
+  font-size: 14px;
 }
 
 .wrap {
@@ -67,6 +68,10 @@ $height: 46px;
       background-color: #eee;
       cursor: pointer;
       transition: .15s background-color ease-in;
+    }
+
+    &.selected{
+      background-color: #d0fff6;
     }
   }
 }
