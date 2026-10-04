@@ -94,5 +94,6 @@ export class Select {
 
     destroy() {
         this.$el.removeEventListener('click', this.clickHandler());
+        this.$el.innerHTML = '';
     }
 }
