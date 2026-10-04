@@ -19,6 +19,7 @@ $height: 46px;
 .select {
   width: 100%;
   position: relative;
+  z-index: 100;
 
   &.open {
     .select__dropdown {
@@ -27,6 +28,10 @@ $height: 46px;
 
     .select__input {
       border-bottom: none;
+    }
+
+    .select__backdrop {
+      display: block;
     }
   }
 
@@ -54,6 +59,17 @@ $height: 46px;
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
   }
 
+  &__backdrop {
+    position: fixed;
+    display: none;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+  }
+
   &__list {
     padding: 0;
     margin: 0;
@@ -70,7 +86,7 @@ $height: 46px;
       transition: .15s background-color ease-in;
     }
 
-    &.selected{
+    &.selected {
       background-color: #d0fff6;
     }
   }
