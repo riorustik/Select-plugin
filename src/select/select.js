@@ -1,5 +1,11 @@
-const getTemplate = (placeholder) => {
+const getTemplate = (data = [], placeholder) => {
     const text = placeholder ?? 'Placeholder'
+
+    const items = data.map(item => {
+        return `
+            <li class="select__item">${item.value}</li>
+        `
+    })
 
     return `
         <div class="select__input" data-type="input">
@@ -8,11 +14,7 @@ const getTemplate = (placeholder) => {
             </div>
             <div class="select__dropdown">
                 <ul class="select__list">
-                    <li class="select__item">123131</li>
-                    <li class="select__item">123131</li>
-                    <li class="select__item">123131</li>
-                    <li class="select__item">123131</li>
-                    <li class="select__item">123131</li>
+                  ${items.join('')}
                 </ul>
             </div>
     `
@@ -28,9 +30,9 @@ export class Select {
     }
 
     #render() {
-        const {placeholder} = this.options;
+        const {placeholder, data} = this.options;
         this.$el.classList.add('select');
-        this.$el.innerHTML = getTemplate(placeholder);
+        this.$el.innerHTML = getTemplate(data, placeholder);
     }
 
     #setup() {
