@@ -1,7 +1,9 @@
-const getTemplate = () => {
+const getTemplate = (placeholder) => {
+    const text = placeholder ?? 'Placeholder'
+
     return `
         <div class="select__input" data-type="input">
-                <span>Text</span>
+                <span>${text}</span>
                 <i class="fa-solid fa-chevron-down" data-type="arrow"></i>
             </div>
             <div class="select__dropdown">
@@ -19,14 +21,16 @@ const getTemplate = () => {
 export class Select {
     constructor(selector, options) {
         this.$el = document.querySelector(selector);
+        this.options = options;
 
         this.#render();
         this.#setup();
     }
 
     #render() {
+        const {placeholder} = this.options;
         this.$el.classList.add('select');
-        this.$el.innerHTML = getTemplate();
+        this.$el.innerHTML = getTemplate(placeholder);
     }
 
     #setup() {
